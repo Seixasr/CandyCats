@@ -35,30 +35,3 @@ func randomType() -> pieceType {
     return pieceType(rawValue:Int.random(in: 0...typesOfPiece.count)) ?? pieceType.t1
 }
 
-//Comparacao entre pecas
-
-enum neighbors{
-    case left
-    case right
-    case up
-    case down
-}
-
-func checkNeighbor(_ type: neighbors){
-    switch type{
-    case .left:
-        
-        return
-    case .right:
-        
-        return
-    case .up:
-        
-        return
-    case .down:
-        
-        return
-        
-        
-    }
-}
