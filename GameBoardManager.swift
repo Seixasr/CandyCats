@@ -72,9 +72,6 @@ func returnNeighbor(row: Int, column: Int, gameBoard: Matrix){
 }
 
 
-
-
-
 class Matrix {
     var board: [[HouseObject]] = []
     var numberOfRows: Int
