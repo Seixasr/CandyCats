@@ -24,9 +24,7 @@ func changePosition(row: Int, column: Int, manager: GameBoardManager){
     rowClickedObjects.append(row)
     columnClickedObjects.append(column)
     
-    
     if clickedObjects.count == 2{
-        
         row1 = rowClickedObjects[0]
         column1 = columnClickedObjects[0]
         row2 = rowClickedObjects[1]
