@@ -23,69 +23,18 @@ enum neighbors{
     case down
 }
 
-func isValidIndex(_ row: Int, _ column: Int, _ gameBoard: Matrix) -> Bool {
-    return row >= 0 && row < gameBoard.board.count && column >= 0 && column < gameBoard.board[row].count
-}
-
 func checkNeighbor(_ type: neighbors,row1: Int, row2: Int, column1: Int,column2: Int, gameBoard: Matrix) -> Bool{
     switch type{
     case .left:
-        if row1 == row2 && column1 == column2 - 1{
-            return isValidIndex(row1, column1-1, gameBoard)
-        }else{
-            return false
-        }
-    case .right:
-        if row1 == row2 && column1 == column2+1{
-            return isValidIndex(row1, column1+1, gameBoard)
-        }else{
-            return false
-        }
-    case .up:
-        if row1 == row2 - 1 && column1 == column2{
-            return isValidIndex(row1-1, column1, gameBoard)
-        }else{
-            return false
-        }
-    case .down:
-        if row1 == row2+1 && column1 == column2{
-            return isValidIndex(row1+1, column1, gameBoard)
-        }else{
-            return false
-        }
+            return row1 == row2 && column1 == column2 - 1
+        case .right:
+            return row1 == row2 && column1 == column2 + 1
+        case .up:
+            return row1 == row2 - 1 && column1 == column2
+        case .down:
+            return row1 == row2 + 1 && column1 == column2
     }
 }
-
-
-//func returnNeighbor(row1: Int, column1: Int, row2: Int, column2: Int, gameBoard: Matrix){
-//    //Left
-//    if checkNeighbor(.left, row1: row1, row2: row2, column1: column1, column2: column2, gameBoard: gameBoard) == false{
-//        print("esquerda:Nao há vizinho")
-//    }else{
-//        print("esquerda: \(gameBoard.board[row1][column1-1].appearence)")
-//    }
-//    
-//    //Right
-//    if checkNeighbor(.right, row1: row1, row2: row2, column1: column1, column2: column2, gameBoard: gameBoard) == false{
-//        print("direta: Nao há vizinho")
-//    }else{
-//        print("direita: \(gameBoard.board[row1][column1+1].appearence)")
-//    }
-//    
-//    //Up
-//    if checkNeighbor(.up, row1: row1, row2: row2, column1: column1, column2: column2, gameBoard: gameBoard){
-//        print("cima: Nao há vizinho")
-//    }else{
-//        print("cima: \(gameBoard.board[row1-1][column1].appearence)")
-//    }
-//    
-//    //Down
-//    if checkNeighbor(.down, row1: row1, row2: row2, column1: column1, column2: column2, gameBoard: gameBoard) == false{
-//        print("baixo: Nao há vizinho")
-//    }else{
-//        print("baixo: \(gameBoard.board[row1+1][column1].appearence)")
-//    }
-//}
 
 class Matrix {
     var board: [[HouseObject]] = []
