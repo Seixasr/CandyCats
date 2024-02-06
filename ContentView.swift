@@ -15,6 +15,7 @@ struct ContentView: View {
             //Criar a matriz
             generateRandomColorMatrix()
             
+            
             HStack{
                 Text("row:")
             }

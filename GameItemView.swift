@@ -15,7 +15,7 @@ struct generateRandomColorMatrix: View {
     @State var columnIndex = 0
 //    @StateObject private var gameBoardManager = GameBoardManager()
     @ObservedObject var gameBoard = GameBoardManager()
-    @State var pieceParts = (row:Int , column:Int ,appearance:Color).self
+    @State var pieceParts = (Color).self
     
     //Definir tamanho da matrizv
     let numberOfRows:Int = 9
@@ -27,8 +27,9 @@ struct generateRandomColorMatrix: View {
                 HStack {
                     ForEach(0..<gameBoard.gameBoard.board[i].count) { j in
                         Button{
-                            //returnNeighbor(row: i, column: j, gameBoard: gameBoard)
+                            
                             changePosition(row: i, column: j, manager: gameBoard)
+                           
 
                         } label:{
                             Rectangle()
