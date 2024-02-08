@@ -43,7 +43,6 @@ struct generateRandomColorMatrix: View {
             }
         }
         .onAppear {
-            matrixCorrection(row: numberOfRows, column: numberOfColumns, manager: gameBoard)
         }
     }
 }
