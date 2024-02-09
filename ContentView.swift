@@ -2,10 +2,6 @@ import SwiftUI
 
 struct ContentView: View {
     
-    
-   
-    
-    
     init() {
         generateRandomColorMatrix()
     }
@@ -14,21 +10,9 @@ struct ContentView: View {
         VStack {
             //Criar a matriz
             generateRandomColorMatrix()
-            
-            
-            HStack{
-                Text("row:")
-            }
             .padding()
         }
     }
-    
-    
-    
-    
-    
-    
-    
 }
 
 //Criar 4 tipos de peças

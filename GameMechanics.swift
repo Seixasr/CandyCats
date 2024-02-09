@@ -79,8 +79,6 @@ func matrixCorrection(row: Int, column: Int, manager: GameBoardManager) {
             }
             
             if isConsecutive {
-                print("mesma cor na linha \(i), posição: \(i) / \(j), cor: \(currentColor)")
-                
                 // Trocar a cor do último objeto da sequência para azul
                 gameBoard.board[i][j + consecutiveCount - 1].appearence = defineColor(randomType())
             }
@@ -101,8 +99,6 @@ func matrixCorrection(row: Int, column: Int, manager: GameBoardManager) {
             }
             
             if isConsecutive {
-                print("mesma cor na coluna \(j), posição: \(i) / \(j), cor: \(currentColor)")
-                
                 // Trocar a cor do último objeto da sequência para azul
                 gameBoard.board[i + consecutiveCount - 1][j].appearence = defineColor(randomType())
             }
@@ -110,25 +106,48 @@ func matrixCorrection(row: Int, column: Int, manager: GameBoardManager) {
     }
 }
 
-//func matrixCorrection(row: Int, column: Int, manager: GameBoardManager){
-//    var gameBoard = manager.gameBoard
-//    var consecutiveRed = 0
-//    for i in 0 ..< row{
-//        for j in 0 ..< column-3{
-//            if gameBoard.board[i][j].appearence == gameBoard.board[i][j+1].appearence && gameBoard.board[i][j+1].appearence == gameBoard.board[i][j+2].appearence {
-//                print("mesma cor na linha\(i), posicao: \(i) / \(j+1), cor: \(gameBoard.board[i][j+1].appearence)")
-//                if gameBoard.board[i][j].appearence == Color.red{
-//                    consecutiveRed += 1
-//                    if consecutiveRed == 1{
-//                        gameBoard.board[i][j+3].appearence = Color.blue
-//                        consecutiveRed = 0
-//                    }
-//                }
-//                
-//                
-//            }
-//        }
-//    }
-//    print(consecutiveRed)
-//   
-//}
+//Verify if 4 or more objects are connected
+func connect4(manager: GameBoardManager){
+    var gameBoard = manager.gameBoard
+    
+    
+    for i in 0..<gameBoard.board.count {
+        var sequenceColor = Color.clear
+        var consecutiveCounter = 0
+        for j in 0..<gameBoard.board[i].count {
+            let currentColor = gameBoard.board[i][j].appearence
+            if currentColor == sequenceColor {
+                consecutiveCounter += 1
+            } else {
+                sequenceColor =  currentColor
+                consecutiveCounter = 1
+            }
+            if consecutiveCounter >= 4{
+                print("4 or more in a row")
+            }
+        }
+    }
+    
+    for j in 0..<gameBoard.board[0].count{
+        var sequenceColor = Color.clear
+        var consecutiveCounter = 0
+        for i in 0..<gameBoard.board.count{
+            let currentColor = gameBoard.board[i][j].appearence
+            if currentColor == sequenceColor {
+                consecutiveCounter += 1
+            } else {
+                sequenceColor =  currentColor
+                consecutiveCounter = 1
+            }
+            if consecutiveCounter >= 4{
+                print("4 or more in a column")
+            }
+        }
+    }
+    
+}
+
+
+func deleteRow(row: Int, column: Int, manager:GameBoardManager){
+    
+}
