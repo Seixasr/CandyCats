@@ -28,7 +28,7 @@ struct generateRandomColorMatrix: View {
                     ForEach(0..<gameBoard.gameBoard.board[i].count) { j in
                         Button{
                             changePosition(row: i, column: j, manager: gameBoard)
-                            connect4(manager: gameBoard)
+                            connect4Row(row: i, column: j,manager: gameBoard)
                            
 
                         } label:{
