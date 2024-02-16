@@ -120,6 +120,25 @@ func matrixCorrection(row: Int, column: Int, manager: GameBoardManager) {
     }
 }
 
+func rowChange(row: Int, positionsRow: [Int],manager: GameBoardManager){
+    var currentRowIndex = row
+    var gameBoard = manager.gameBoard
+    while currentRowIndex > 0 {
+        for k in 0..<positionsRow.count {
+            let column = positionsRow[k]
+            let tempColor = gameBoard.board[currentRowIndex][column].appearence
+            gameBoard.board[currentRowIndex][column].appearence = gameBoard.board[currentRowIndex - 1][column].appearence
+            gameBoard.board[currentRowIndex - 1][column].appearence = tempColor
+        }
+        currentRowIndex -= 1
+    }
+    let topRow = 0
+    for k in 0..<positionsRow.count {
+        let column = positionsRow[k]
+        gameBoard.board[topRow][column].appearence = defineColor(randomType()) // Supondo que 'defineColor' e 'randomType' sejam funções definidas em outro lugar
+    }
+}
+
 //Verify if 4 or more objects are connected
 func connect4Row(row: Int, column: Int, manager: GameBoardManager){
     let gameBoard = manager.gameBoard
@@ -127,7 +146,7 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager){
     var positionsColumn:[Int] = []
     
     // Verificação na horizontal
-    for i in 1..<gameBoard.board.count {
+    for i in 0..<gameBoard.board.count {
         var sequenceColor = Color.clear
         var consecutiveCounter = 0
         var positionsRow:[Int] = []
@@ -137,72 +156,55 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager){
             if currentColor == sequenceColor {
                 consecutiveCounter += 1
                 positionsRow.append(j)
-            } else {
+            }else if consecutiveCounter >= 4 {
+                print("4 or more in a row")
+                rowChange(row: i, positionsRow: positionsRow, manager: manager)
+                break
+            }else {
                 sequenceColor = currentColor
                 consecutiveCounter = 1
                 positionsRow = [j]
             }
-            if consecutiveCounter >= 4 {
-                print("4 or more in a row")
-                // Trocar as cores com a linha superior até alcançar o topo da matriz
-                var currentRowIndex = i
-                while currentRowIndex > 0 {
-                    for k in 0..<positionsRow.count {
-                        let column = positionsRow[k]
-                        let tempColor = gameBoard.board[currentRowIndex][column].appearence
-                        gameBoard.board[currentRowIndex][column].appearence = gameBoard.board[currentRowIndex - 1][column].appearence
-                        gameBoard.board[currentRowIndex - 1][column].appearence = tempColor
-                    }
-                    currentRowIndex -= 1
-                }
-                let topRow = 0
-                for k in 0..<positionsRow.count {
-                    let column = positionsRow[k]
-                    gameBoard.board[topRow][column].appearence = defineColor(randomType()) // Supondo que 'defineColor' e 'randomType' sejam funções definidas em outro lugar
-                }
-                break
-            }
+           
+        }
+        if consecutiveCounter >= 4 {
+            print("4 or more in a row")
+            rowChange(row: i, positionsRow: positionsRow, manager: manager)
         }
     }
     
     // Verificação na vertical
-    for j in 0..<gameBoard.board[0].count{
-        var sequenceColor = Color.clear
-        var consecutiveCounter = 0
-        for i in 0..<gameBoard.board.count {
-            let currentColor = gameBoard.board[i][j].appearence
-            if currentColor == sequenceColor {
-                consecutiveCounter += 1
-                positionsColumn.append(i)
-            } else {
-                sequenceColor =  currentColor
-                consecutiveCounter = 1
-                positionsColumn.removeAll()
-            }
-            if consecutiveCounter >= 4 {
-                print("4 or more in a column")
-                // Remover os elementos marcados
-                var currentColumnIndex = j
-                for k in 0..<positionsColumn.count{
-                    let column = positionsRow[k]
-                    gameBoard.board[positionsColumn[k]].remove(at: column)
-                    gameBoard.board[positionsColumn[k]].insert(HouseObject(appearence: defineColor(randomType())), at: column)
-                }
-            }
-        }
-    }
+//    for j in 0..<gameBoard.board[0].count{
+//        var sequenceColor = Color.clear
+//        var consecutiveCounter = 0
+//        var lastRow = 0
+//        for i in 0..<gameBoard.board.count {
+//            let currentColor = gameBoard.board[i][j].appearence
+//            if currentColor == sequenceColor {
+//                consecutiveCounter += 1
+//                lastRow = i
+//            }else if consecutiveCounter >= 4 {
+//                var currentColumnIndex = j
+//                
+//                while currentColumnIndex > 0 {
+//                    for k in 0..<positionsColumn.count{
+//                        let tempColor = gameBoard.board[positionsColumn[k]][currentColumnIndex].appearence
+//                        gameBoard.board[positionsColumn[k]][currentColumnIndex].appearence = gameBoard.board[positionsColumn[k]][currentColumnIndex-1].appearence
+//                        gameBoard.board[positionsColumn[k]][currentColumnIndex-1].appearence = tempColor
+//                    }
+//                    currentColumnIndex -= 1
+//                }
+////                let topRow2 = 0
+////                for k in 0..<positionsColumn.count{
+////                    gameBoard.board[topRow2][positionsColumn[k]].appearence = defineColor(randomType())
+////                }
+//                break
+//            }else {
+//                sequenceColor =  currentColor
+//                consecutiveCounter = 1
+//                positionsColumn = [i]
+//            }
+//        }
+//    }
 }
 
-
-//func generateRow(row: Int, numberOfElements: Int, manager: GameBoardManager){
-//    var gameBoard = manager.gameBoard
-//    for i in 0..<numberOfElements{
-//        gameBoard.board[row].insert(HouseObject(appearence: defineColor(randomType()) ), at: i)
-//    }
-//    
-//}
-
-
-//func deleteRow(positions:[[Int, Int]], manager:GameBoardManager){
-//    
-//}
