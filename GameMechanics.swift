@@ -148,53 +148,66 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager, redPoints: In
     
     // Verificação na horizontal
     //    for i in 0..<gameBoard.board.count {
-    var consecutiveCounter = 0
+    var consecutiveCounter = 1
     let currentColor = gameBoard.board[row][column].appearence
     
     
-    for i in 
-    //Pra frente de onde apertou
-    for k in column..<gameBoard.board[row].count {
+    for k in 0..<gameBoard.board[row].count-1{
         
-        if k < 8 {
-            if gameBoard.board[row][k].appearence == gameBoard.board[row][k + 1].appearence {
-                consecutiveCounter += 1
-                positionsRow.append(k)
-            } else {
-                positionsRow.removeAll()
-                consecutiveCounter = 0
-            }
+        if gameBoard.board[row][k].appearence == gameBoard.board[row][k + 1].appearence {
+            consecutiveCounter += 1
+            positionsRow.append(k)
         } else {
-            if gameBoard.board[row][k].appearence == gameBoard.board[row][k - 1].appearence {
-                consecutiveCounter += 1
-                positionsRow.append(k)
-            } else {
-                positionsRow.removeAll()
-                consecutiveCounter = 0
+            if consecutiveCounter >= 4 {
+                break
             }
+            consecutiveCounter = 1
+            positionsRow.removeAll()
         }
     }
-    
-    //Pra trás de onde apertou
-    for k in 0..<column {
-        if k > 0 {
-            if gameBoard.board[row][k].appearence == gameBoard.board[row][k - 1].appearence {
-                consecutiveCounter += 1
-                positionsRow.append(k)
-            } else {
-                positionsRow.removeAll()
-                consecutiveCounter = 0
-            }
-        } else {
-            if gameBoard.board[row][k].appearence == gameBoard.board[row][k + 1].appearence {
-                consecutiveCounter += 1
-                positionsRow.append(k)
-            } else {
-                positionsRow.removeAll()
-                consecutiveCounter = 0
-            }
-        }
-    }
+    print(consecutiveCounter)
+    //Pra frente de onde apertou
+//    for k in column..<gameBoard.board[row].count {
+//        
+//        if k < 8 {
+//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k + 1].appearence {
+//                consecutiveCounter += 1
+//                positionsRow.append(k)
+//            } else {
+//                positionsRow.removeAll()
+//                consecutiveCounter = 0
+//            }
+//        } else {
+//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k - 1].appearence {
+//                consecutiveCounter += 1
+//                positionsRow.append(k)
+//            } else {
+//                positionsRow.removeAll()
+//                consecutiveCounter = 0
+//            }
+//        }
+//    }
+//    
+//    //Pra trás de onde apertou
+//    for k in 0..<column {
+//        if k > 0 {
+//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k - 1].appearence {
+//                consecutiveCounter += 1
+//                positionsRow.append(k)
+//            } else {
+//                positionsRow.removeAll()
+//                consecutiveCounter = 0
+//            }
+//        } else {
+//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k + 1].appearence {
+//                consecutiveCounter += 1
+//                positionsRow.append(k)
+//            } else {
+//                positionsRow.removeAll()
+//                consecutiveCounter = 0
+//            }
+//        }
+//    }
         
         //            if gameBoard.board[row][j].appearence == currentColor {
         //                consecutiveCounter += 1
