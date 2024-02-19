@@ -139,15 +139,26 @@ func rowChange(row: Int, positionsRow: [Int],manager: GameBoardManager){
     }
 }
 
+func changeToColor(color: Color) -> Color {
+    var currentColor = color
+    return currentColor
+}
+
 //Verify if 4 or more objects are connected
-func connect4Row(row: Int, column: Int, manager: GameBoardManager){
+func connect4Row(row: Int, column: Int, manager: GameBoardManager, redPoints: Int, bluePoints: Int, greenPoints: Int, yellowPoints: Int, color: Color) -> (Int, Color){
     let gameBoard = manager.gameBoard
     var positionsRow:[Int] = []
     var points = 0
+    var redPoints = redPoints
+    var bluePoints = bluePoints
+    var yellowPoints = yellowPoints
+    var greenPoints = greenPoints
+    var sequenceColor = Color.clear
+    var currentColor = changeToColor(color: color)
+    var lastColor = Color.clear
     
     // Verificação na horizontal
     for i in 0..<gameBoard.board.count {
-        var sequenceColor = Color.clear
         var consecutiveCounter = 0
         var positionsRow:[Int] = []
         
@@ -163,12 +174,22 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager){
             }
             if consecutiveCounter >= 4 {
                 rowChange(row: i, positionsRow: positionsRow, manager: manager)
-                print(points)
+                points += 1 // Adiciona 1 ponto para cada 4 objetos em sequência
+            } else if consecutiveCounter >= 5 && consecutiveCounter % 5 == 0 {
+                points += 2 // Adiciona 2 pontos para cada 5 objetos em sequência
+            } else if consecutiveCounter >= 6 && consecutiveCounter % 6 == 0 {
+                points += 3 // Adiciona 3 pontos para cada 6 objetos em sequência
+            }else if consecutiveCounter >= 7 && consecutiveCounter % 7 == 0 {
+                points += 4 // Adiciona 3 pontos para cada 6 objetos em sequência
             }
             
         }
-        
+
     }
+    return (points, sequenceColor)
+}
+
+
     // Verificação na vertical
 //    for j in 0..<gameBoard.board[0].count{
 //        var sequenceColor = Color.clear
@@ -202,5 +223,5 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager){
 //            }
 //        }
 //    }
-}
+
 

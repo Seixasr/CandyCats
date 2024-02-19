@@ -5,7 +5,7 @@ struct ContentView: View {
     init() {
         generateRandomColorMatrix()
     }
-    var progressRed = 0.7
+    var progressRed = 0.1
     var progressBlue = 0.3
     var progressYellow = 0.4
     var progressGreen = 0.1

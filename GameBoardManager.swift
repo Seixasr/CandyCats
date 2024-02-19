@@ -10,7 +10,7 @@ import SwiftUI
 
 class GameBoardManager: ObservableObject {
     @Published var gameBoard: Matrix
-
+    
     init() {
         self.gameBoard = Matrix(numberOfRows: 9, numberOfColumns: 9)
         
