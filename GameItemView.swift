@@ -34,12 +34,9 @@ struct generateRandomColorMatrix: View {
                     ForEach(0..<gameBoard.gameBoard.board[i].count) { j in
                         Button{
                             changePosition(row: i, column: j, manager: gameBoard)
-                            points = connect4Row(row: i, column: j,manager: gameBoard, redPoints: redPoints, bluePoints: bluePoints, greenPoints: greenPoints, yellowPoints: yellowPoints, color: sequenceColor).0
-                            //changeOnTap = changeToColor(color: gameBoard.gameBoard.board[i][j].appearence)
-                            sequenceColor = connect4Row(row: i, column: j,manager: gameBoard, redPoints: redPoints, bluePoints: bluePoints, greenPoints: greenPoints, yellowPoints: yellowPoints, color: changeOnTap).1
                             
-                            print(sequenceColor)
-                            
+                            points = connect4Row(row: i, column: j,manager: gameBoard, redPoints: redPoints, bluePoints: bluePoints, greenPoints: greenPoints, yellowPoints: yellowPoints, color: sequenceColor)
+                                                       
                             switch sequenceColor {
                             case .red:
                                 redPoints += points
