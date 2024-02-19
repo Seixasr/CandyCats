@@ -144,6 +144,7 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager){
     let gameBoard = manager.gameBoard
     var positionsRow:[Int] = []
     var positionsColumn:[Int] = []
+    var points = 0
     
     // Verificação na horizontal
     for i in 0..<gameBoard.board.count {
@@ -157,19 +158,20 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager){
                 consecutiveCounter += 1
                 positionsRow.append(j)
             }else if consecutiveCounter >= 4 {
-                print("4 or more in a row")
                 rowChange(row: i, positionsRow: positionsRow, manager: manager)
+                
+                print(points)
                 break
             }else {
                 sequenceColor = currentColor
                 consecutiveCounter = 1
                 positionsRow = [j]
             }
-           
+            
         }
         if consecutiveCounter >= 4 {
-            print("4 or more in a row")
             rowChange(row: i, positionsRow: positionsRow, manager: manager)
+            print(points)
         }
     }
     

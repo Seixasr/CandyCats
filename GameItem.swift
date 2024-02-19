@@ -35,3 +35,25 @@ func randomType() -> pieceType {
     return pieceType(rawValue:Int.random(in: 0...typesOfPiece.count)) ?? pieceType.t1
 }
 
+enum score: Int{
+    case s1 = 4
+    case s2 = 5
+    case s3 = 6
+    case s4 = 7
+}
+
+func defineScore(_ type: score){
+    var value = 0
+    switch type{
+    case .s1:
+        return value += 1
+    case .s2:
+        return value += 2
+    case .s3:
+        return value += 3
+    case .s4:
+        return value += 4
+    }
+}
+
+

@@ -8,8 +8,6 @@
 import Foundation
 import SwiftUI
 
-
-
 struct generateRandomColorMatrix: View {
     @State var rowIndex = 0
     @State var columnIndex = 0
