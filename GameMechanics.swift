@@ -19,7 +19,7 @@ var column2:Int = 0
 
 func changePosition(row: Int, column: Int, manager: GameBoardManager){
     
-    var gameBoard = manager.gameBoard
+    let gameBoard = manager.gameBoard
     clickedObjects.append(gameBoard.board[row][column])
     rowClickedObjects.append(row)
     columnClickedObjects.append(column)
@@ -34,7 +34,7 @@ func changePosition(row: Int, column: Int, manager: GameBoardManager){
         //Verificar se os dois clicados sao vizinhos
         
         var areNeighbors = false
-        var originalColor = gameBoard.board[row1][column1].appearence
+        let originalColor = gameBoard.board[row1][column1].appearence
         for neighbor in [neighbors.left, .right, .up, .down]{
             if checkNeighbor(neighbor, row1: rowClickedObjects[0], row2: rowClickedObjects[1], column1: columnClickedObjects[0], column2: columnClickedObjects[1], gameBoard: gameBoard){
                 areNeighbors = true
@@ -62,7 +62,7 @@ func changePosition(row: Int, column: Int, manager: GameBoardManager){
 }
 
 func changePositionMatrix(row:Int,column:Int,rowLenght:Int,manager:GameBoardManager){
-    var gameBoard = manager.gameBoard
+    let gameBoard = manager.gameBoard
     
     if row == 0{
         gameBoard.board[0][column].appearence = defineColor(randomType())
@@ -76,7 +76,7 @@ func changePositionMatrix(row:Int,column:Int,rowLenght:Int,manager:GameBoardMana
 }
 
 func matrixCorrection(row: Int, column: Int, manager: GameBoardManager) {
-    var gameBoard = manager.gameBoard
+    let gameBoard = manager.gameBoard
     let consecutiveCount = 3 // A quantidade mínima para considerar uma sequência
     
     // Analisar as linhas
@@ -122,8 +122,8 @@ func matrixCorrection(row: Int, column: Int, manager: GameBoardManager) {
 
 func rowChange(row: Int, positionsRow: [Int],manager: GameBoardManager){
     var currentRowIndex = row
-    var gameBoard = manager.gameBoard
-    while currentRowIndex > 0 {
+    let gameBoard = manager.gameBoard
+    while currentRowIndex > 0{
         for k in 0..<positionsRow.count {
             let column = positionsRow[k]
             let tempColor = gameBoard.board[currentRowIndex][column].appearence
@@ -135,7 +135,7 @@ func rowChange(row: Int, positionsRow: [Int],manager: GameBoardManager){
     let topRow = 0
     for k in 0..<positionsRow.count {
         let column = positionsRow[k]
-        gameBoard.board[topRow][column].appearence = defineColor(randomType()) // Supondo que 'defineColor' e 'randomType' sejam funções definidas em outro lugar
+        gameBoard.board[topRow][column].appearence = defineColor(randomType())
     }
 }
 
@@ -143,7 +143,6 @@ func rowChange(row: Int, positionsRow: [Int],manager: GameBoardManager){
 func connect4Row(row: Int, column: Int, manager: GameBoardManager){
     let gameBoard = manager.gameBoard
     var positionsRow:[Int] = []
-    var positionsColumn:[Int] = []
     var points = 0
     
     // Verificação na horizontal
@@ -157,24 +156,19 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager){
             if currentColor == sequenceColor {
                 consecutiveCounter += 1
                 positionsRow.append(j)
-            }else if consecutiveCounter >= 4 {
-                rowChange(row: i, positionsRow: positionsRow, manager: manager)
-                
-                print(points)
-                break
             }else {
                 sequenceColor = currentColor
                 consecutiveCounter = 1
                 positionsRow = [j]
             }
+            if consecutiveCounter >= 4 {
+                rowChange(row: i, positionsRow: positionsRow, manager: manager)
+                print(points)
+            }
             
         }
-        if consecutiveCounter >= 4 {
-            rowChange(row: i, positionsRow: positionsRow, manager: manager)
-            print(points)
-        }
+        
     }
-    
     // Verificação na vertical
 //    for j in 0..<gameBoard.board[0].count{
 //        var sequenceColor = Color.clear
