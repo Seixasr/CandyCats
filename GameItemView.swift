@@ -35,7 +35,7 @@ struct generateRandomColorMatrix: View {
                         Button{
                             changePosition(row: i, column: j, manager: gameBoard)
                             
-                            let connect4 = connect4Row(row: i, column: j,manager: gameBoard, redPoints: redPoints, bluePoints: bluePoints, greenPoints: greenPoints, yellowPoints: yellowPoints, color: searchColor)
+                            let connect4 = connect4Row(row: i, column: j,manager: gameBoard)
                             
                             points = connect4.0
                             searchColor = connect4.1

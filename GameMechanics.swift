@@ -140,15 +140,12 @@ func rowChange(row: Int, positionsRow: [Int],manager: GameBoardManager){
 }
 
 //Verify if 4 or more objects are connected
-func connect4Row(row: Int, column: Int, manager: GameBoardManager, redPoints: Int, bluePoints: Int, greenPoints: Int, yellowPoints: Int, color: Color) -> (Int,Color) {
+func connect4Row(row: Int, column: Int, manager: GameBoardManager) -> (Int,Color) {
     let gameBoard = manager.gameBoard
     var positionsRow:[Int] = []
     var positionsColor:[Color] = [Color.red]
     var points = 0
     var sequenceColor = Color.clear
-    
-    // Verificação na horizontal
-    //    for i in 0..<gameBoard.board.count {
     var consecutiveCounter = 1
     let currentColor = gameBoard.board[row][column].appearence
     var searchColor = Color.clear
@@ -161,7 +158,7 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager, redPoints: In
                 consecutiveCounter += 1
                 positionsRow.append(k)
                 positionsColor.append(gameBoard.board[row][k].appearence)
-                searchColor = positionsColor[0]
+                searchColor = positionsColor.last!
             } else {
                 if consecutiveCounter >= 4 {
                     break
@@ -170,107 +167,9 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager, redPoints: In
                 positionsRow.removeAll()
                 positionsColor.removeAll()
             }
-            //        }else{
-            //            if gameBoard.board[row][k].appearence == gameBoard.board[row][k - 1].appearence{
-            //                consecutiveCounter += 1
-            //                positionsRow.append(k)
-            //                positionsColor.append(gameBoard.board[row][k].appearence)
-            //                searchColor = positionsColor[0]
-            //            }
-            //        }
         }
     }
     positionsRow.append((positionsRow.last ?? 0)+1)
-    
-//    for k in 0..<column {
-//        if k > 0 {
-//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k - 1].appearence{
-//                consecutiveCounter += 1
-//                positionsRow.append(k)
-//                positionsColor.append(gameBoard.board[row][k].appearence)
-//                searchColor = positionsColor[0]
-//            }
-//        } else {
-//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k + 1].appearence {
-//                consecutiveCounter += 1
-//                positionsRow.append(k)
-//                positionsColor.append(gameBoard.board[row][k].appearence)
-//                searchColor = positionsColor[0]
-//            } else {
-//                if consecutiveCounter >= 4 {
-//                    break
-//                }
-//                consecutiveCounter = 1
-//                positionsRow.removeAll()
-//                positionsColor.removeAll()
-//            }
-//        }
-//    }
-    //Buscar cor da lista
-    
-    
-    print(positionsRow)
-    print(positionsColor)
-    //Pra frente de onde apertou
-//    for k in column..<gameBoard.board[row].count {
-//        
-//        if k < 8 {
-//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k + 1].appearence {
-//                consecutiveCounter += 1
-//                positionsRow.append(k)
-//            } else {
-//                positionsRow.removeAll()
-//                consecutiveCounter = 0
-//            }
-//        } else {
-//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k - 1].appearence {
-//                consecutiveCounter += 1
-//                positionsRow.append(k)
-//            } else {
-//                positionsRow.removeAll()
-//                consecutiveCounter = 0
-//            }
-//        }
-//    }
-//    
-//    //Pra trás de onde apertou
-//    for k in 0..<column {
-//        if k > 0 {
-//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k - 1].appearence {
-//                consecutiveCounter += 1
-//                positionsRow.append(k)
-//            } else {
-//                positionsRow.removeAll()
-//                consecutiveCounter = 0
-//            }
-//        } else {
-//            if gameBoard.board[row][k].appearence == gameBoard.board[row][k + 1].appearence {
-//                consecutiveCounter += 1
-//                positionsRow.append(k)
-//            } else {
-//                positionsRow.removeAll()
-//                consecutiveCounter = 0
-//            }
-//        }
-//    }
-        
-        //            if gameBoard.board[row][j].appearence == currentColor {
-        //                consecutiveCounter += 1
-        //                positionsRow.append(j)
-        //                print("entendeu")
-        //            } else {
-        //                consecutiveCounter = 0
-        //            }
-        
-        //            if currentColor == sequenceColor {
-        //                consecutiveCounter += 1
-        //                positionsRow.append(j)
-        //            }else {
-        //                sequenceColor = currentColor
-        //                consecutiveCounter = 1
-        //                positionsRow.removeAll()
-        //            }
-
     
     if positionsRow.count == 4{
         rowChange(row: row, positionsRow: positionsRow, manager: manager)
@@ -285,60 +184,7 @@ func connect4Row(row: Int, column: Int, manager: GameBoardManager, redPoints: In
         rowChange(row: row, positionsRow: positionsRow, manager: manager)
         points += 4
     }
-    
-    
-//        if consecutiveCounter >= 4 {
-//            rowChange(row: row, positionsRow: positionsRow, manager: manager)
-//            points += 1 // Adiciona 1 ponto para cada 4 objetos em sequência
-//            print(positionsRow)
-//            consecutiveCounter = 0
-//        } else if consecutiveCounter >= 5 && consecutiveCounter % 5 == 0 {
-//            points += 2 // Adiciona 2 pontos para cada 5 objetos em sequência
-//            print(points)
-//        } else if consecutiveCounter >= 6 && consecutiveCounter % 6 == 0 {
-//            points += 3 // Adiciona 3 pontos para cada 6 objetos em sequência
-//            print(points)
-//        }else if consecutiveCounter >= 7 && consecutiveCounter % 7 == 0 {
-//            points += 4 // Adiciona 3 pontos para cada 6 objetos em sequência
-//            print(points)
-//        }
         return (points, searchColor)
     }
-
-
-
-// Verificação na vertical
-//    for j in 0..<gameBoard.board[0].count{
-//        var sequenceColor = Color.clear
-//        var consecutiveCounter = 0
-//        var lastRow = 0
-//        for i in 0..<gameBoard.board.count {
-//            let currentColor = gameBoard.board[i][j].appearence
-//            if currentColor == sequenceColor {
-//                consecutiveCounter += 1
-//                lastRow = i
-//            }else if consecutiveCounter >= 4 {
-//                var currentColumnIndex = j
-//
-//                while currentColumnIndex > 0 {
-//                    for k in 0..<positionsColumn.count{
-//                        let tempColor = gameBoard.board[positionsColumn[k]][currentColumnIndex].appearence
-//                        gameBoard.board[positionsColumn[k]][currentColumnIndex].appearence = gameBoard.board[positionsColumn[k]][currentColumnIndex-1].appearence
-//                        gameBoard.board[positionsColumn[k]][currentColumnIndex-1].appearence = tempColor
-//                    }
-//                    currentColumnIndex -= 1
-//                }
-////                let topRow2 = 0
-////                for k in 0..<positionsColumn.count{
-////                    gameBoard.board[topRow2][positionsColumn[k]].appearence = defineColor(randomType())
-////                }
-//                break
-//            }else {
-//                sequenceColor =  currentColor
-//                consecutiveCounter = 1
-//                positionsColumn = [i]
-//            }
-//        }
-//    }
 
 
