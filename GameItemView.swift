@@ -16,7 +16,7 @@ struct generateRandomColorMatrix: View {
     @State var pieceParts = (Color).self
     @State var redPoints: Int = 0
     @State var bluePoints: Int = 0
-    @State var yellowPoints: Int = 0
+    @State var purplePoints: Int = 0
     @State var greenPoints: Int = 0
     @State var points: Int = 0
 
@@ -41,13 +41,13 @@ struct generateRandomColorMatrix: View {
                             searchColor = connect4.1
                             
                             switch searchColor {
-                            case .red:
+                            case defineColor(.t1):
                                 redPoints += points
-                            case .blue:
+                            case defineColor(.t2):
                                 bluePoints += points
-                            case .yellow:
-                                yellowPoints += points
-                            case .green:
+                            case defineColor(.t4):
+                                purplePoints += points
+                            case defineColor(.t3):
                                 greenPoints += points
                             default:
                                 break
@@ -63,19 +63,43 @@ struct generateRandomColorMatrix: View {
                 }
             }
             HStack{
-                CircularProgressBarView(progress: Double(redPoints)/20, circleColor: Color.red)
+                CircularProgressBarView(progress: Double(redPoints)/20, circleColor: defineColor(.t1))
                     .frame(width: 50, height: 50)
                     .padding()
-                CircularProgressBarView(progress: Double(bluePoints)/20, circleColor: Color.blue)
+                CircularProgressBarView(progress: Double(bluePoints)/20, circleColor: defineColor(.t2))
                     .frame(width: 50, height: 50)
                     .padding()
-                CircularProgressBarView(progress: Double(yellowPoints)/20, circleColor: Color.yellow)
+                CircularProgressBarView(progress: Double(purplePoints)/20, circleColor: defineColor(.t4))
                     .frame(width: 50, height: 50)
                     .padding()
-                CircularProgressBarView(progress: Double(greenPoints)/20, circleColor: Color.green)
+                CircularProgressBarView(progress: Double(greenPoints)/20, circleColor: defineColor(.t3))
                     .frame(width: 50, height: 50)
                     .padding()
             }
+        }
+    }
+}
+
+struct CircularProgressBarView: View{
+    private let progress: Double
+    private let circleColor: Color
+        
+    init(progress: Double, circleColor: Color) {
+            self.progress = progress
+            self.circleColor = circleColor
+        }
+    
+    var body: some View{
+        ZStack{
+            Circle()
+                .stroke(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: 10, lineCap: .round))
+
+            Circle()
+                .trim(from: 0.0, to: progress)
+                .stroke(circleColor, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                .animation(.easeInOut)
+                .rotationEffect(Angle(degrees: -90))
+            
         }
     }
 }
