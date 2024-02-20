@@ -19,8 +19,8 @@ struct generateRandomColorMatrix: View {
     @State var yellowPoints: Int = 0
     @State var greenPoints: Int = 0
     @State var points: Int = 0
-    @State var sequenceColor: Color = Color.clear
-    @State var changeOnTap: Color = Color.clear
+
+    @State var searchColor: Color = Color.clear
     
     //Definir tamanho da matrizv
     let numberOfRows:Int = 9
@@ -35,9 +35,12 @@ struct generateRandomColorMatrix: View {
                         Button{
                             changePosition(row: i, column: j, manager: gameBoard)
                             
-                            points = connect4Row(row: i, column: j,manager: gameBoard, redPoints: redPoints, bluePoints: bluePoints, greenPoints: greenPoints, yellowPoints: yellowPoints, color: sequenceColor)
-                                                       
-                            switch sequenceColor {
+                            let connect4 = connect4Row(row: i, column: j,manager: gameBoard, redPoints: redPoints, bluePoints: bluePoints, greenPoints: greenPoints, yellowPoints: yellowPoints, color: searchColor)
+                            
+                            points = connect4.0
+                            searchColor = connect4.1
+                            
+                            switch searchColor {
                             case .red:
                                 redPoints += points
                             case .blue:
@@ -54,17 +57,24 @@ struct generateRandomColorMatrix: View {
                             Rectangle()
                                 .frame(width: 30, height: 30) //
                                 .foregroundColor(gameBoard.gameBoard.board[i][j].appearence)
-                            
                         }
                         
                     }
                 }
             }
-            VStack {
-                Text("Red Points: \(redPoints)")
-                Text("Blue Points: \(bluePoints)")
-                Text("Yellow Points: \(yellowPoints)")
-                Text("Green Points: \(greenPoints)")
+            HStack{
+                CircularProgressBarView(progress: Double(redPoints)/20, circleColor: Color.red)
+                    .frame(width: 50, height: 50)
+                    .padding()
+                CircularProgressBarView(progress: Double(bluePoints)/20, circleColor: Color.blue)
+                    .frame(width: 50, height: 50)
+                    .padding()
+                CircularProgressBarView(progress: Double(yellowPoints)/20, circleColor: Color.yellow)
+                    .frame(width: 50, height: 50)
+                    .padding()
+                CircularProgressBarView(progress: Double(greenPoints)/20, circleColor: Color.green)
+                    .frame(width: 50, height: 50)
+                    .padding()
             }
         }
     }
