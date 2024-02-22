@@ -22,10 +22,7 @@ struct generateRandomColorMatrix: View {
 
     @State var searchColor: Color = Color.clear
     
-    //Definir tamanho da matrizv
-    let numberOfRows:Int = 9
-    let numberOfColumns:Int = 9
-
+    //Definir tamanho da matriz
     
     var body: some View {
         VStack {
@@ -55,7 +52,7 @@ struct generateRandomColorMatrix: View {
                             
                         } label:{
                             RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 30, height: 30) //
+                                .frame(width: 44, height: 44) //
                                 .foregroundColor(gameBoard.gameBoard.board[i][j].appearence)
                         }
                         
@@ -63,18 +60,30 @@ struct generateRandomColorMatrix: View {
                 }
             }
             HStack{
-                CircularProgressBarView(progress: Double(redPoints)/20, circleColor: defineColor(.t1))
-                    .frame(width: 50, height: 50)
-                    .padding()
-                CircularProgressBarView(progress: Double(bluePoints)/20, circleColor: defineColor(.t2))
-                    .frame(width: 50, height: 50)
-                    .padding()
-                CircularProgressBarView(progress: Double(purplePoints)/20, circleColor: defineColor(.t4))
-                    .frame(width: 50, height: 50)
-                    .padding()
-                CircularProgressBarView(progress: Double(greenPoints)/20, circleColor: defineColor(.t3))
-                    .frame(width: 50, height: 50)
-                    .padding()
+                VStack{
+                    CircularProgressBarView(progress: Double(redPoints)/10, circleColor: defineColor(.t1))
+                        .frame(width: 50, height: 50)
+                        .padding()
+                    Text("\(redPoints)/10")
+                }
+                VStack{
+                    CircularProgressBarView(progress: Double(bluePoints)/20, circleColor: defineColor(.t2))
+                        .frame(width: 50, height: 50)
+                        .padding()
+                    Text("\(bluePoints)/10")
+                }
+                VStack{
+                    CircularProgressBarView(progress: Double(purplePoints)/20, circleColor: defineColor(.t4))
+                        .frame(width: 50, height: 50)
+                        .padding()
+                    Text("\(purplePoints)/10")
+                }
+                VStack{
+                    CircularProgressBarView(progress: Double(greenPoints)/20, circleColor: defineColor(.t3))
+                        .frame(width: 50, height: 50)
+                        .padding()
+                    Text("\(greenPoints)/10")
+                }
             }
         }
     }

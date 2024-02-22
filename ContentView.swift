@@ -14,23 +14,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            //Criar a matriz
-//            HStack{
-//                
-//                CircularProgressBarView(progress: Double(redPoints)/20, circleColor: Color.red)
-//                    .frame(width: 50, height: 50)
-//                    .padding()
-//                CircularProgressBarView(progress: Double(bluePoints)/20, circleColor: Color.blue)
-//                    .frame(width: 50, height: 50)
-//                    .padding()
-//                CircularProgressBarView(progress: Double(yellowPoints)/20, circleColor: Color.yellow)
-//                    .frame(width: 50, height: 50)
-//                    .padding()
-//                CircularProgressBarView(progress: Double(greenPoints)/20, circleColor: Color.green)
-//                    .frame(width: 50, height: 50)
-//                    .padding()
-//                
-//            }
             generateRandomColorMatrix()
             .padding()
             

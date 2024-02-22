@@ -12,9 +12,9 @@ class GameBoardManager: ObservableObject {
     @Published var gameBoard: Matrix
     
     init() {
-        self.gameBoard = Matrix(numberOfRows: 9, numberOfColumns: 9)
+        self.gameBoard = Matrix(numberOfRows: 7, numberOfColumns: 7)
         
-        matrixCorrection(row:9, column: 9, manager: self)
+        matrixCorrection(row:7, column: 7, manager: self)
     }
 }
 
