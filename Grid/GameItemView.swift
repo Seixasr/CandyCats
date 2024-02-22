@@ -20,13 +20,20 @@ struct generateRandomColorMatrix: View {
     @State var greenPoints: Int = 0
     @State var points: Int = 0
     @State var diffilcuty: Double = 8
-
+    @State var isCompleted: Bool = false
+    
     @State var searchColor: Color = Color.clear
     
     //Definir tamanho da matriz
     
     var body: some View {
         VStack {
+            Text("Help Pitico!")
+                .font(.custom("Sobear", size: 32))
+            Text("Fill the cat's needs to proceed")
+                .font(.custom("Sobear", size: 18))
+                .padding(.bottom, 32)
+            
             ForEach(0..<gameBoard.gameBoard.board.count) { i in
                 HStack {
                     ForEach(0..<gameBoard.gameBoard.board[i].count) { j in
@@ -69,7 +76,7 @@ struct generateRandomColorMatrix: View {
                         Text("\(redPoints)/8")
                             .font(.custom("Sobear", size: 24))
                     }else{
-                        Text("Completed!")
+                        Text("Done")
                             .font(.custom("Sobear", size: 14))
                     }
                     
@@ -82,7 +89,7 @@ struct generateRandomColorMatrix: View {
                         Text("\(bluePoints)/8")
                             .font(.custom("Sobear", size: 24))
                     }else{
-                        Text("Completed!")
+                        Text("Done")
                             .font(.custom("Sobear", size: 14))
                     }
                 }
@@ -94,7 +101,7 @@ struct generateRandomColorMatrix: View {
                         Text("\(purplePoints)/8")
                             .font(.custom("Sobear", size: 24))
                     }else{
-                        Text("Completed!")
+                        Text("Done")
                             .font(.custom("Sobear", size: 14))
                     }
                 }
@@ -106,40 +113,75 @@ struct generateRandomColorMatrix: View {
                         Text("\(greenPoints)/8")
                             .font(.custom("Sobear", size: 24))
                     }else{
-                        Text("Completed!")
+                        Text("Done")
                             .font(.custom("Sobear", size: 14))
                     }
                 }
             }
-            .padding(.top, 16)
-        }
-    }
-}
-
-struct CircularProgressBarView: View{
-    private let progress: Double
-    private let circleColor: Color
-        
-    init(progress: Double, circleColor: Color) {
-            self.progress = progress
-            self.circleColor = circleColor
-        }
-    
-    var body: some View{
-        ZStack{
-            Circle()
-                .stroke(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: 10, lineCap: .round))
-
-            Circle()
-                .trim(from: 0.0, to: progress)
-                .stroke(circleColor, style: StrokeStyle(lineWidth: 10, lineCap: .round))
-                .animation(.easeInOut)
-                .rotationEffect(Angle(degrees: -90))
+            .padding(.top, 32)
+            .padding(.bottom, 32)
+            
+            if redPoints >= 8 && bluePoints >= 8 && purplePoints >= 8 && greenPoints >= 8{
+                
+                NavigationLink{
+                    FinalView()
+                }label: {
+                    ZStack{
+                        RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                            .frame(width: 360, height: 70)
+                            .foregroundStyle(Color(red: 171/255, green: 186/255, blue: 91/255))
+                        
+                        Text("Next")
+                            .foregroundStyle(.white)
+                            .font(.custom("Sobear", size: 40))
+                    }
+                    .padding(.bottom, 16)
+                    .padding(.horizontal, 16)
+                }
+                
+            }else{
+                ZStack{
+                    RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
+                        .frame(width: 360, height: 70)
+                        .foregroundStyle(.gray)
+                    
+                    Text("Next")
+                        .foregroundStyle(.white)
+                        .font(.custom("Sobear", size: 40))
+                }
+                .padding(.bottom, 16)
+                .padding(.horizontal, 16)
+            }
+            Spacer()
             
         }
     }
 }
-
-
-
-
+    
+    struct CircularProgressBarView: View{
+        private let progress: Double
+        private let circleColor: Color
+        
+        init(progress: Double, circleColor: Color) {
+            self.progress = progress
+            self.circleColor = circleColor
+        }
+        
+        var body: some View{
+            ZStack{
+                Circle()
+                    .stroke(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                
+                Circle()
+                    .trim(from: 0.0, to: progress)
+                    .stroke(circleColor, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                    .animation(.easeInOut)
+                    .rotationEffect(Angle(degrees: -90))
+                
+            }
+        }
+    }
+    
+    
+    
+    

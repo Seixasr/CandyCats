@@ -41,7 +41,7 @@ struct Explanation3View: View {
                 Spacer()
                 
                 NavigationLink{
-                    Explanation2View()
+                    TutorialView()
                 }label: {
                     ZStack{
                         RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
