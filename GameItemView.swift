@@ -54,7 +54,7 @@ struct generateRandomColorMatrix: View {
                             }
                             
                         } label:{
-                            Rectangle()
+                            RoundedRectangle(cornerRadius: 10)
                                 .frame(width: 30, height: 30) //
                                 .foregroundColor(gameBoard.gameBoard.board[i][j].appearence)
                         }
