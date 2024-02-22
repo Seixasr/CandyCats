@@ -1,32 +1,37 @@
 //
-//  PresentationView.swift
-//  TestWwdc
+//  HelpView.swift
+//  
 //
 //  Created by Rafael Santos Seixas Figueiredo on 22/02/24.
 //
 
 import SwiftUI
 
-struct PresentationView: View {
+struct HelpView: View {
     var body: some View {
         NavigationStack{
             VStack{
                 Spacer()
-                Image("Pitico Tela 1")
-                    .padding(16)
-                        .foregroundColor(Color(.white))
-                
-                    Text("Hello, my name is Pitico, and I work for the Welcoming Cats Association (WCA).")
+                ZStack{
+                    Image("Pitico smile")
+                        .padding(.trailing, 100)
+                    Image("Amora")
+                        .padding(.leading, 240)
+                        .padding(.bottom, 180)
+                }
+
+                    Text("I need you help to prepare a home to welcome our dear friend Amora.")
                         .font(.custom("Sobear", size: 24))
                         .padding()
                         .frame(width: 360)
                         .background(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)).fill(Color.white))
                         .foregroundColor(.black)
-                
+                        
+
                 Spacer()
                 
                 NavigationLink{
-                    ContextView()
+                    Explanation1View()
                 }label: {
                     ZStack{
                         RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
@@ -47,5 +52,5 @@ struct PresentationView: View {
 }
 
 #Preview {
-    PresentationView()
+    HelpView()
 }

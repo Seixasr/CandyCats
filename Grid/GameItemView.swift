@@ -19,6 +19,7 @@ struct generateRandomColorMatrix: View {
     @State var purplePoints: Int = 0
     @State var greenPoints: Int = 0
     @State var points: Int = 0
+    @State var diffilcuty: Double = 8
 
     @State var searchColor: Color = Color.clear
     
@@ -61,30 +62,56 @@ struct generateRandomColorMatrix: View {
             }
             HStack{
                 VStack{
-                    CircularProgressBarView(progress: Double(redPoints)/10, circleColor: defineColor(.t1))
+                    CircularProgressBarView(progress: Double(redPoints)/diffilcuty, circleColor: defineColor(.t1))
                         .frame(width: 50, height: 50)
                         .padding()
-                    Text("\(redPoints)/10")
+                    if redPoints < 8 {
+                        Text("\(redPoints)/8")
+                            .font(.custom("Sobear", size: 24))
+                    }else{
+                        Text("Completed!")
+                            .font(.custom("Sobear", size: 14))
+                    }
+                    
                 }
                 VStack{
-                    CircularProgressBarView(progress: Double(bluePoints)/20, circleColor: defineColor(.t2))
+                    CircularProgressBarView(progress: Double(bluePoints)/diffilcuty, circleColor: defineColor(.t2))
                         .frame(width: 50, height: 50)
                         .padding()
-                    Text("\(bluePoints)/10")
+                    if bluePoints < 8 {
+                        Text("\(bluePoints)/8")
+                            .font(.custom("Sobear", size: 24))
+                    }else{
+                        Text("Completed!")
+                            .font(.custom("Sobear", size: 14))
+                    }
                 }
                 VStack{
-                    CircularProgressBarView(progress: Double(purplePoints)/20, circleColor: defineColor(.t4))
+                    CircularProgressBarView(progress: Double(purplePoints)/diffilcuty, circleColor: defineColor(.t4))
                         .frame(width: 50, height: 50)
                         .padding()
-                    Text("\(purplePoints)/10")
+                    if purplePoints < 8 {
+                        Text("\(purplePoints)/8")
+                            .font(.custom("Sobear", size: 24))
+                    }else{
+                        Text("Completed!")
+                            .font(.custom("Sobear", size: 14))
+                    }
                 }
                 VStack{
-                    CircularProgressBarView(progress: Double(greenPoints)/20, circleColor: defineColor(.t3))
+                    CircularProgressBarView(progress: Double(greenPoints)/diffilcuty, circleColor: defineColor(.t3))
                         .frame(width: 50, height: 50)
                         .padding()
-                    Text("\(greenPoints)/10")
+                    if greenPoints < 8 {
+                        Text("\(greenPoints)/8")
+                            .font(.custom("Sobear", size: 24))
+                    }else{
+                        Text("Completed!")
+                            .font(.custom("Sobear", size: 14))
+                    }
                 }
             }
+            .padding(.top, 16)
         }
     }
 }

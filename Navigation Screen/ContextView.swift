@@ -1,5 +1,5 @@
 //
-//  PresentationView.swift
+//  ContextView.swift
 //  TestWwdc
 //
 //  Created by Rafael Santos Seixas Figueiredo on 22/02/24.
@@ -7,26 +7,25 @@
 
 import SwiftUI
 
-struct PresentationView: View {
+struct ContextView: View {
     var body: some View {
         NavigationStack{
             VStack{
                 Spacer()
-                Image("Pitico Tela 1")
+                Image("Pitico speaking")
                     .padding(16)
-                        .foregroundColor(Color(.white))
-                
-                    Text("Hello, my name is Pitico, and I work for the Welcoming Cats Association (WCA).")
+
+                    Text("My job is to ensure that the homes of future kitten owners are safe for them. But this is not an easy task; it requires a lot of care and attention..")
                         .font(.custom("Sobear", size: 24))
                         .padding()
                         .frame(width: 360)
                         .background(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)).fill(Color.white))
                         .foregroundColor(.black)
+                        
                 
                 Spacer()
-                
                 NavigationLink{
-                    ContextView()
+                    HelpView()
                 }label: {
                     ZStack{
                         RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
@@ -47,5 +46,5 @@ struct PresentationView: View {
 }
 
 #Preview {
-    PresentationView()
+    ContextView()
 }
