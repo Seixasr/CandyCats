@@ -32,7 +32,7 @@ struct TutorialView: View {
                 Spacer()
                 
                 NavigationLink{
-                    GameView()
+                    Tutorial2View()
                 }label: {
                     ZStack{
                         RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))

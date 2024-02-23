@@ -8,19 +8,19 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "TestWwdc",
+    name: "Pitico's Care",
     platforms: [
         .iOS("16.0")
     ],
     products: [
         .iOSApplication(
-            name: "TestWwdc",
+            name: "Pitico's Care",
             targets: ["AppModule"],
             bundleIdentifier: "com.rafaseixas.TestWwdc",
             teamIdentifier: "6HUC3FNVX9",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .chatMessage),
+            appIcon: .asset("AppIcon"),
             accentColor: .asset("AccentColor"),
             supportedDeviceFamilies: [
                 .pad,

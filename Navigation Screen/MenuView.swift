@@ -48,7 +48,7 @@ struct MenuView: View {
                 
                 //About me
                 NavigationLink{
-                    
+                    AboutMeView()
                 }label: {
                     ZStack{
                         RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))

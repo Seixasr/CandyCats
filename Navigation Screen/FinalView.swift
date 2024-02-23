@@ -12,10 +12,10 @@ struct FinalView: View {
         NavigationStack{
             VStack{
                 Spacer()
-                    Image("Pitico tired")
-                    .padding(.bottom, 32)
+                    Image("Final Scene")
+                        .padding(.bottom, 32)
                 
-                Text("Very good! Now Amora can enjoy his new home safely! It was a great day of work, thank you very much for your help. If you'll excuse me, it's my turn to play. See you later!")
+                Text("Very good! Now Amora found her Home sweet e home, and is also my turn to play. Thank you for your help! See you later!")
                             .font(.custom("Sobear", size: 24))
                             .foregroundColor(.black)
                             .padding()

@@ -11,7 +11,11 @@ import Foundation
 struct Explanation2View: View {
     
     let images = ["Card Window Mesh", "Card Litter box", "Card Feeder", "Card Toys"]
-    let texts = ["texto 1 texto 1 texto 1 texto 1 texto 1 texto 1 texto 1 texto 1 texto 1 texto 1 texto 1 texto 1 texto 1 texto 1 texto 1", "texto 2","texto 3", "texto 4"]
+    let texts = [
+        "Window meshes are crucial for cat adoption to prevent escapes and falls, avoiding external dangers, disorientation, and stress. It also provides safety and peace of mind.",
+        "Cats have the habit of using the litter box due to their nature and instinct to stay clean. They cover their waste with litter with the intention of helping to keep their environment odor-free and more hygienic.",
+        "Feeders play a crucial role in the posture of cats, as they are elevated, aligning the mouth, esophagus, and stomach, thereby preventing digestive issues.",
+        "Cats can become bored or stressed indoors without adequate stimulation. Providing toys not only entertains them but also promotes physical exercise, helping to prevent health problems associated with sedentary behavior."]
     
     var body: some View {
         NavigationStack{
@@ -32,6 +36,7 @@ struct Explanation2View: View {
                                 .padding()
                                 .frame(width: 360)
                                 .background(RoundedRectangle(cornerSize: CGSize(width: 20, height: 20)).fill(Color.white))
+                                .padding(.bottom, 32)
                             Spacer()
                             
                         }
