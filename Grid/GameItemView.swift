@@ -156,7 +156,6 @@ struct generateRandomColorMatrix: View {
             Spacer()
             
         }
-    }
 }
     
     struct CircularProgressBarView: View{
