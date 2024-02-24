@@ -27,49 +27,49 @@ struct generateRandomColorMatrix: View {
     //Definir tamanho da matriz
     
     var body: some View {
-        VStack {
-            Text("Help Pitico!")
-                .font(.custom("Sobear", size: 32))
-            Text("Fill the cat's needs to proceed")
-                .font(.custom("Sobear", size: 18))
-                .padding(.bottom, 32)
-            
-            ForEach(0..<gameBoard.gameBoard.board.count) { i in
-                HStack {
-                    ForEach(0..<gameBoard.gameBoard.board[i].count) { j in
-                        Button{
-                            changePosition(row: i, column: j, manager: gameBoard)
-                            
-                            let connect4 = connect4Row(row: i, column: j,manager: gameBoard)
-                            
-                            points = connect4.0
-                            searchColor = connect4.1
-                            
-                            switch searchColor {
-                            case defineColor(.t1):
-                                redPoints += points
-                            case defineColor(.t2):
-                                bluePoints += points
-                            case defineColor(.t4):
-                                purplePoints += points
-                            case defineColor(.t3):
-                                greenPoints += points
-                            default:
-                                break
+        NavigationStack{
+            VStack {
+                Text("Help Pitico!")
+                    .font(.custom("Sobear", size: 32))
+                Text("Fill the cat's needs to proceed")
+                    .font(.custom("Sobear", size: 18))
+                    .padding(.bottom, 32)
+                
+                ForEach(0..<gameBoard.gameBoard.board.count) { i in
+                    HStack {
+                        ForEach(0..<gameBoard.gameBoard.board[i].count) { j in
+                            Button{
+                                changePosition(row: i, column: j, manager: gameBoard)
+                                
+                                let connect4 = connect4Row(row: i, column: j,manager: gameBoard)
+                                
+                                points = connect4.0
+                                searchColor = connect4.1
+                                
+                                switch searchColor {
+                                case defineColor(.t1):
+                                    redPoints += points
+                                case defineColor(.t2):
+                                    bluePoints += points
+                                case defineColor(.t4):
+                                    purplePoints += points
+                                case defineColor(.t3):
+                                    greenPoints += points
+                                default:
+                                    break
+                                }
+                                
+                            } label:{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 44, height: 44) //
+                                    .foregroundColor(gameBoard.gameBoard.board[i][j].appearence)
                             }
                             
-                        } label:{
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 44, height: 44) //
-                                .foregroundColor(gameBoard.gameBoard.board[i][j].appearence)
                         }
-                        
                     }
                 }
-            }
-            HStack{
-                VStack{
-                        
+                HStack{
+                    VStack{
                         CircularProgressBarView(progress: Double(redPoints)/diffilcuty, circleColor: defineColor(.t1))
                             .frame(width: 50, height: 50)
                             .padding()
@@ -81,41 +81,42 @@ struct generateRandomColorMatrix: View {
                                 .font(.custom("Sobear", size: 18))
                         }
                     }
-                }
-                VStack{
-                    CircularProgressBarView(progress: Double(bluePoints)/diffilcuty, circleColor: defineColor(.t2))
-                        .frame(width: 50, height: 50)
-                        .padding()
-                    if bluePoints < Int(diffilcuty) {
-                        Text("\(bluePoints)/\(Int(diffilcuty))")
-                            .font(.custom("Sobear", size: 24))
-                    }else{
-                        Text("Done")
-                            .font(.custom("Sobear", size: 18))
+                    
+                    VStack{
+                        CircularProgressBarView(progress: Double(bluePoints)/diffilcuty, circleColor: defineColor(.t2))
+                            .frame(width: 50, height: 50)
+                            .padding()
+                        if bluePoints < Int(diffilcuty) {
+                            Text("\(bluePoints)/\(Int(diffilcuty))")
+                                .font(.custom("Sobear", size: 24))
+                        }else{
+                            Text("Done")
+                                .font(.custom("Sobear", size: 18))
+                        }
                     }
-                }
-                VStack{
-                    CircularProgressBarView(progress: Double(purplePoints)/diffilcuty, circleColor: defineColor(.t4))
-                        .frame(width: 50, height: 50)
-                        .padding()
-                    if purplePoints < Int(diffilcuty) {
-                        Text("\(purplePoints)/\(Int(diffilcuty))")
-                            .font(.custom("Sobear", size: 24))
-                    }else{
-                        Text("Done")
-                            .font(.custom("Sobear", size: 18))
+                    VStack{
+                        CircularProgressBarView(progress: Double(purplePoints)/diffilcuty, circleColor: defineColor(.t4))
+                            .frame(width: 50, height: 50)
+                            .padding()
+                        if purplePoints < Int(diffilcuty) {
+                            Text("\(purplePoints)/\(Int(diffilcuty))")
+                                .font(.custom("Sobear", size: 24))
+                        }else{
+                            Text("Done")
+                                .font(.custom("Sobear", size: 18))
+                        }
                     }
-                }
-                VStack{
-                    CircularProgressBarView(progress: Double(greenPoints)/diffilcuty, circleColor: defineColor(.t3))
-                        .frame(width: 50, height: 50)
-                        .padding()
-                    if greenPoints < Int(diffilcuty) {
-                        Text("\(greenPoints)/\(Int(diffilcuty))")
-                            .font(.custom("Sobear", size: 22))
-                    }else{
-                        Text("Done")
-                            .font(.custom("Sobear", size: 18))
+                    VStack{
+                        CircularProgressBarView(progress: Double(greenPoints)/diffilcuty, circleColor: defineColor(.t3))
+                            .frame(width: 50, height: 50)
+                            .padding()
+                        if greenPoints < Int(diffilcuty) {
+                            Text("\(greenPoints)/\(Int(diffilcuty))")
+                                .font(.custom("Sobear", size: 22))
+                        }else{
+                            Text("Done")
+                                .font(.custom("Sobear", size: 18))
+                        }
                     }
                 }
             }
@@ -156,6 +157,7 @@ struct generateRandomColorMatrix: View {
             Spacer()
             
         }
+    }
 }
     
     struct CircularProgressBarView: View{
