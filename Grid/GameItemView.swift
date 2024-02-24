@@ -69,17 +69,18 @@ struct generateRandomColorMatrix: View {
             }
             HStack{
                 VStack{
-                    CircularProgressBarView(progress: Double(redPoints)/diffilcuty, circleColor: defineColor(.t1))
-                        .frame(width: 50, height: 50)
-                        .padding()
-                    if redPoints < Int(diffilcuty) {
-                        Text("\(redPoints)/\(Int(diffilcuty))")
-                            .font(.custom("Sobear", size: 24))
-                    }else{
-                        Text("Done")
-                            .font(.custom("Sobear", size: 18))
+                        
+                        CircularProgressBarView(progress: Double(redPoints)/diffilcuty, circleColor: defineColor(.t1))
+                            .frame(width: 50, height: 50)
+                            .padding()
+                        if redPoints < Int(diffilcuty) {
+                            Text("\(redPoints)/\(Int(diffilcuty))")
+                                .font(.custom("Sobear", size: 24))
+                        }else{
+                            Text("Done")
+                                .font(.custom("Sobear", size: 18))
+                        }
                     }
-                    
                 }
                 VStack{
                     CircularProgressBarView(progress: Double(bluePoints)/diffilcuty, circleColor: defineColor(.t2))
