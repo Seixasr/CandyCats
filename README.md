@@ -29,5 +29,8 @@ To finalize the gameplay, I created a scoring system based on the number of queu
 
 ## Final considerations
 
-For the project development, I utilized the Scrum process for task and requirement organization, allowing me to track my progress. All artwork and assets used in the project are of my own creation and were developed using the Figma software. The font used in the texts is called **Sobear** and was published on the _beFonts_ website at the following link: [https://befonts.com/sobear-font.html](https://befonts.com/sobear-font.html), with a license for free commercial use: [https://befonts.com/free-for-commercial-use](https://befonts.com/free-for-commercial-use).
+For the project development, I utilized the Scrum process for task and requirement organization, allowing me to track my progress. 
+All artwork and assets used in the project are of my own creation and were developed using the **Figma** software. 
+The font used in the texts is called **Sobear** and was published on the _beFonts_ website at the following link: [https://befonts.com/sobear-font.html](https://befonts.com/sobear-font.html), with a license for free commercial use: [https://befonts.com/free-for-commercial-use](https://befonts.com/free-for-commercial-use).
+For reasearch of the itens from the game i've interview my girlfrind who used to work in a cat NGO  used those links: https://blog.cobasi.com.br/caixa-de-areia-para-gatos/ ,  https://www.guiaderedesdeprotecao.com.br/a-importancia-das-redes-de-protecao-para-janelas/ ,  https://ofazedor.com/comedouro-qual-e-a-importancia-para-os-gatos/#:~:text=Além%20de%20proporcionar%20conforto%2C%20os,comida%20não%20poderia%20ser%20diferente. , https://catpower.com.br/a-importancia-de-colocar-telas-nas-janelas/ , https://chalesco.com.br/saiba-a-importancia-de-brinquedos-para-gatos/
  I would like to extend a special thank you to my family and colleagues from the Academy.
