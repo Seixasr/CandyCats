@@ -69,22 +69,39 @@ struct generateRandomColorMatrix: View {
                     }
                 }
                 HStack{
-                    VStack{
-                        CircularProgressBarView(progress: Double(redPoints)/diffilcuty, circleColor: defineColor(.t1))
-                            .frame(width: 50, height: 50)
-                            .padding()
-                        if redPoints < Int(diffilcuty) {
-                            Text("\(redPoints)/\(Int(diffilcuty))")
-                                .font(.custom("Sobear", size: 24))
-                        }else{
-                            Text("Done")
-                                .font(.custom("Sobear", size: 18))
-                        }
-                    }
                     
                     VStack{
-                        CircularProgressBarView(progress: Double(bluePoints)/diffilcuty, circleColor: defineColor(.t2))
-                            .frame(width: 50, height: 50)
+                        ZStack{
+                            CircularProgressBarView(progress: Double(redPoints)/diffilcuty, circleColor: defineColor(.t1))
+                                .frame(width: 50, height: 50)
+                                
+                            Image(systemName: "baseball.circle.fill")
+                                .resizable()
+                                .frame(width: 42, height: 42)
+                                .foregroundStyle(Color("gridOrange"))
+                        }
+                        .padding()
+                            if redPoints < Int(diffilcuty) {
+                                Text("\(redPoints)/\(Int(diffilcuty))")
+                                    .font(.custom("Sobear", size: 24))
+                            }else{
+                                Text("Done")
+                                    .font(.custom("Sobear", size: 18))
+                            }
+                        }
+                        
+                    
+                    
+                    VStack{
+                        ZStack{
+                            CircularProgressBarView(progress: Double(bluePoints)/diffilcuty, circleColor: defineColor(.t2))
+                                .frame(width: 50, height: 50)
+                            
+                            Image(systemName: "grid.circle.fill")
+                                .resizable()
+                                .frame(width: 42, height: 42)
+                                .foregroundStyle(Color("gridBlue"))
+                        }
                             .padding()
                         if bluePoints < Int(diffilcuty) {
                             Text("\(bluePoints)/\(Int(diffilcuty))")
@@ -95,8 +112,15 @@ struct generateRandomColorMatrix: View {
                         }
                     }
                     VStack{
-                        CircularProgressBarView(progress: Double(purplePoints)/diffilcuty, circleColor: defineColor(.t4))
-                            .frame(width: 50, height: 50)
+                        ZStack{
+                            CircularProgressBarView(progress: Double(purplePoints)/diffilcuty, circleColor: defineColor(.t4))
+                                .frame(width: 50, height: 50)
+                            
+                            Image(systemName: "toilet.circle.fill")
+                                .resizable()
+                                .frame(width: 42, height: 42)
+                                .foregroundStyle(Color("gridPurple"))
+                        }
                             .padding()
                         if purplePoints < Int(diffilcuty) {
                             Text("\(purplePoints)/\(Int(diffilcuty))")
@@ -107,8 +131,15 @@ struct generateRandomColorMatrix: View {
                         }
                     }
                     VStack{
-                        CircularProgressBarView(progress: Double(greenPoints)/diffilcuty, circleColor: defineColor(.t3))
-                            .frame(width: 50, height: 50)
+                        ZStack{
+                            CircularProgressBarView(progress: Double(greenPoints)/diffilcuty, circleColor: defineColor(.t3))
+                                .frame(width: 50, height: 50)
+                            
+                            Image(systemName: "fork.knife.circle.fill")
+                                .resizable()
+                                .frame(width: 42, height: 42)
+                                .foregroundStyle(Color("gridGreen"))
+                        }
                             .padding()
                         if greenPoints < Int(diffilcuty) {
                             Text("\(greenPoints)/\(Int(diffilcuty))")

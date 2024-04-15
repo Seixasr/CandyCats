@@ -15,7 +15,7 @@ struct ContextView: View {
                 Image("Pitico speaking")
                     .padding(16)
 
-                    Text("My job is to ensure that the homes of future kitten owners are safe for them. But this is not an easy task; it requires a lot of care and attention..")
+                    Text("My job is to ensure that the homes of future kitten owners are safe for them. But this is not an easy task; it requires a lot of care and attention.")
                         .font(.custom("Sobear", size: 24))
                         .padding()
                         .frame(width: 360)
