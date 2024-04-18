@@ -41,6 +41,7 @@ struct FinalView: View {
                 }
                 
             }
+            .frame(maxWidth: .infinity)
             .background(Color("background"))
             
         }

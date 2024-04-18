@@ -36,8 +36,10 @@ struct AboutMeView: View {
                         
                 Spacer()
             }
+            .frame(maxWidth: .infinity)
             .background(Color("background"))
         }
+        
     }
 }
 

@@ -14,16 +14,17 @@ struct MenuView: View {
 
     var body: some View {
         
-        NavigationStack{
-            VStack{
+        NavigationStack {
+            
+            VStack {
                 VStack {
                     
                     Spacer()
                     Image("logoPitico")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                    
                         .frame(width: 300, height: 300)
+                   
                     Text("Pitico's Care")
                         .font(.custom("Sobear", size: 60))
                         .multilineTextAlignment(.center)
@@ -63,6 +64,7 @@ struct MenuView: View {
                     .padding(.horizontal, 16)
                 }
             }
+            .frame(maxWidth: .infinity)
             .background(Color("background"))
         }
     }

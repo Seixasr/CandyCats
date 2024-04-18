@@ -10,11 +10,10 @@ import SwiftUI
 struct PresentationView: View {
     var body: some View {
         NavigationStack{
-            VStack{
+            VStack {
                 Spacer()
                 Image("Pitico Tela 1")
                     .padding(16)
-                        .foregroundColor(Color(.white))
                 
                     Text("Hello, my name is Pitico, and I work for the Welcoming Cats Association (WCA).")
                         .font(.custom("Sobear", size: 24))
@@ -41,6 +40,7 @@ struct PresentationView: View {
                     .padding(.horizontal, 16)
                 }
             }
+            .frame(maxWidth: .infinity)
             .background(Color("background"))
         }
     }

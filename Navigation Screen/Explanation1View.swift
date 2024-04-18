@@ -42,6 +42,7 @@ struct Explanation1View: View {
                     .padding(.horizontal, 16)
                 }
             }
+            .frame(maxWidth: .infinity)
             .background(Color("background"))
         }
     }
